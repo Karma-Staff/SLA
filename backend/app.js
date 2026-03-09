@@ -8,6 +8,11 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
+// Root route to fix "Cannot GET /"
+app.get('/', (req, res) => {
+  res.send('SLA Backend is up and running!');
+});
+
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'SLA Backend is running' });
 });
